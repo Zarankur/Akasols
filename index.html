@@ -42,8 +42,15 @@
         <!-- here define the content to display on top of the marker -->
         <a-box position='0 0.5 0' material='color: red;'></a-box>
       </a-marker>
+
+      <a-marker preset='kanji'>
+        <!-- here define the content to display on top of the marker -->
+        <a-box position='0 0.5 0' material='color: green;'></a-box>
+      </a-marker>
+      
       <!-- define a simple camera -->
-      <a-entity camera></a-entity>
+      <!-- <a-entity camera></a-entity> -->
+      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
     </a-scene>
     
 
