@@ -25,12 +25,14 @@ AFRAME.registerComponent("hammer-pinchpan",{
           default:
             break;
         }
-        model.object3D.rotation = rotation;
+        // model.object3D.rotation = rotation;
       });
 
      hammertime.on("pinch", (ev) => {
         let scale = {x:ev.scale, y:ev.scale, z:ev.scale}
-        model.object3D.scale = scale;
+        model.object3D.scale.x = scale.x;
+        model.object3D.scale.y = scale.y;
+        model.object3D.scale.z = scale.z;
     });
   }
 });
