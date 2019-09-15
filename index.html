@@ -42,7 +42,7 @@
 
       <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
       <!-- define your markers -->
-      <a-marker id="hiro" preset='hiro'>
+      <a-marker id="hiro" preset='hiro' onAnchorFound={(e) =>  console.log(e)}>
         <!-- here define the content to display on top of the marker -->
         <a-box position='0 0.5 0' material='color: red;'></a-box>
       </a-marker>
