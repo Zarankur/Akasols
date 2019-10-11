@@ -1,4 +1,9 @@
 const carousel = document.querySelector('.carousel');
+const htmlelement = document.querySelector("#htmlElement");
+
+document.addEventListener('click', function(){
+  console.log("element_clicked");
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   // nav menu
