@@ -3,7 +3,7 @@ const htmlelement = document.querySelector("#htmlElement");
 const htmlelement2 = document.querySelector("#htmlElement2");
 let device = new Device("cloud.arest.io/akasol");
 
-document.addEventListener('click', function(){
+htmlelement.addEventListener('click', function(){
   console.log("element_clicked");
   // let background = htmlelement.style.background
   
@@ -11,7 +11,7 @@ document.addEventListener('click', function(){
 
 });
 
-document.addEventListener('click', function(){
+htmlelement2.addEventListener('click', function(){
   console.log("element_clicked");
   
   device.digitalWrite(4, 1);
