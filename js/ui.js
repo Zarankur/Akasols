@@ -8,8 +8,10 @@ document.addEventListener('click', function(){
   let background = htmlelement.style.background
   if (background == 'green'){
     device.digitalWrite(4, 1);
+    background = htmlelement.style.background = "red"
   } else {
     device.digitalWrite(4, 0);
+    background = htmlelement.style.background = "green"
   }
 });
 
@@ -18,8 +20,10 @@ document.addEventListener('click', function(){
   let background2 = htmlelement2.style.background
   if (background2 == 'green'){
     device.digitalWrite(0, 0);
+    background = htmlelement.style.background = "red"
   } else {
     device.digitalWrite(0, 1);
+    background = htmlelement.style.background = "green"
   }
 });
 
