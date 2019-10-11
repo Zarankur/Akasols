@@ -5,26 +5,17 @@ let device = new Device("cloud.arest.io/akasol");
 
 document.addEventListener('click', function(){
   console.log("element_clicked");
-  let background = htmlelement.style.background
-  if (background == 'green'){
-    device.digitalWrite(4, 1);
-    htmlelement.style.background = "red"
-  } else {
-    device.digitalWrite(4, 0);
-    htmlelement.style.background = "green"
-  }
+  // let background = htmlelement.style.background
+  
+  device.digitalWrite(4, 0);
+
 });
 
 document.addEventListener('click', function(){
   console.log("element_clicked");
-  let background2 = htmlelement2.style.background
-  if (background2 == 'green'){
-    device.digitalWrite(0, 0);
-    htmlelement2.style.background = "red"
-  } else {
-    device.digitalWrite(0, 1);
-    htmlelement2.style.background = "green"
-  }
+  
+  device.digitalWrite(4, 1);
+
 });
 
 document.addEventListener('DOMContentLoaded', function() {
