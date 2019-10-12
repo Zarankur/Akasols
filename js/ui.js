@@ -5,9 +5,14 @@ let device = new Device("cloud.arest.io/akasol");
 
 htmlelement.addEventListener('click', function(){
   console.log("element_clicked");
-  // let background = htmlelement.style.background
-  
-  device.digitalWrite(4, 0);
+  let background = htmlelement.style.background
+  if (background == "green"){
+    device.digitalWrite(4, 1);
+    htmlelement.style.background = "red";
+  } else {
+    device.digitalWrite(4, 0);
+    htmlelement.style.background = "green";
+  }
 
 });
 
