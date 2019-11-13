@@ -5,8 +5,67 @@
   --title: #FF8816;
 }
 
+h1{
+  font-size: 52px;
+}
+
+.dark{
+  background-color: rgba(0,0,0,0.4);
+  border-radius:50px;  
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  padding: 40px;
+  text-shadow: 0px 0px 10px #00d2ff;
+  color: #fff;
+  font-size: 32px;
+}
+.main{
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
+}
+.menu{
+  width: 256px;
+  height: 768px;
+  text-align: center;
+}
+.menu ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+p button{
+  display: inline-block;
+  width: 30%;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+p button:hover{
+  background-color: #fff;
+  color: #888;
+}
+p button:active{
+  background-color: #fff;
+  color: #888;
+  box-shadow: 0px 0px 50px #00d2ff;
+}
+
+.button.on {
+  background-color: #008CBA;
+  color: white;
+}
+.button2.off {
+  background-color: #f44336;
+  color: white;
+}
+
 /* layout styles */
-nav{
+/* nav{
   background: var(--primary);
   border-bottom: 10px solid var(--secondary);
   position: absolute;
@@ -21,7 +80,7 @@ nav a span{
 }
 nav .sidenav-trigger{
   margin: 0;
-}
+} */
 
 /* recipe styles */
 /* .recipes{
@@ -44,7 +103,7 @@ nav .sidenav-trigger{
   grid-area: details;
   margin-top: 6px;
 } */
-.recipe-delete{
+/* .recipe-delete{
   grid-area: delete;
   position: absolute;
   bottom: 20px;
@@ -52,7 +111,7 @@ nav .sidenav-trigger{
 }
 .recipe-delete i{
   font-size: 24px;
-}
+} */
 /* .recipe-title{
   font-weight: bold;
 }
@@ -63,7 +122,7 @@ nav .sidenav-trigger{
 /* form-styles */
 .center{
   position: absolute;
-};
+}
 .add-btn{
   background: var(--title) !important;
 }
@@ -90,4 +149,10 @@ form .input-field{
 .aframe {
   margin : 0px; 
   overflow: hidden;
-};
+}
+
+.argui {
+  position: fixed;
+  overflow: hidden;
+  z-index: 1;
+}
