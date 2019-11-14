@@ -23,7 +23,7 @@ const aframe_gui = document.querySelector('.aframe_gui');
 //   device.digitalWrite(4, 1);
 
 // });
-const url = 'http://192.168.1.14/';
+const url = '//192.168.1.14/';
 
 function press_button(name){
   const xhttp = new XMLHttpRequest();
