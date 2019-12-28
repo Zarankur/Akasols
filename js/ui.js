@@ -23,7 +23,7 @@ const aframe_gui = document.querySelector('.aframe_gui');
 //   device.digitalWrite(4, 1);
 
 // });
-const url = '//192.168.1.14/';
+const url = 'https://esp8266.local/' //'//192.168.1.14/'; //'//192.168.0.174:1880/hello';     // '//192.168.1.14/';
 
 function press_button(name){
   const xhttp = new XMLHttpRequest();
@@ -57,8 +57,9 @@ function updateGui( ) {
     xhr.onload = function (e) {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          // console.log(xhr.responseText);
+          console.log(xhr.responseText);
           let text = xhr.responseText;
+          // console.log(text);
           let text1 = text.split("<body>")[1];
           const html = text1.split("</body>")[0];
           // console.log(html);
