@@ -23,7 +23,7 @@ const aframe_gui = document.querySelector('.aframe_gui');
 //   device.digitalWrite(4, 1);
 
 // });
-const url = 'https://esp8266.local/' //'//192.168.1.14/'; //'//192.168.0.174:1880/hello';     // '//192.168.1.14/';
+const url = 'https://192.168.1.14/'//'https://esp8266.local/' //'//192.168.1.14/'; //'//192.168.0.174:1880/hello';     // '//192.168.1.14/';
 
 function press_button(name){
   const xhttp = new XMLHttpRequest();
