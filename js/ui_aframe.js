@@ -73,6 +73,7 @@ function updateGui( ) {
     };
     xhr.onerror = function (e) {
       console.error(xhr.statusText);
+      console.log(e, xhr);
       const html = `
         <h1> Device is offline </h1>
          `;

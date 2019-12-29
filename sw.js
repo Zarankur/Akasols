@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v14';
-const dynamicCacheName = 'site-dynamic-v14';
+const staticCacheName = 'site-static-v15';
+const dynamicCacheName = 'site-dynamic-v15';
 const assets = [
   './',
   './index.html',
@@ -59,6 +59,7 @@ self.addEventListener('fetch', evt => {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
+          console.log(fetchRes);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             // check cached items size
