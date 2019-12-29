@@ -79,7 +79,7 @@ function updateGui( ) {
          `;
       aframe_gui.innerHTML = html;
     };
-    xhr.send(null); 
+    xhr.send(); 
 
   } else if (typeof XDomainRequest != "undefined") {
 
