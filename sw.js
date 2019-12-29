@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v18';
-const dynamicCacheName = 'site-dynamic-v18';
+const staticCacheName = 'site-static-v19';
+const dynamicCacheName = 'site-dynamic-v19';
 const assets = [
   './',
   './index.html',
@@ -56,7 +56,7 @@ self.addEventListener('activate', evt => {
 
 self.addEventListener('fetch', function(event) {
   //removing firebase entries from fetch
-  if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
+  if(event.request.url.indexOf('firestore.googleapis.com') === -1){
     console.log('Handling fetch event for', event.request.url);
 
     event.respondWith(
@@ -71,7 +71,7 @@ self.addEventListener('fetch', function(event) {
         return fetch(event.request).then(function(response) {
           console.log('Response from network is:', response);
           return caches.open(dynamicCacheName).then(cache => {
-            cache.put(evt.request.url, fetchRes.clone());
+            cache.put(event.request.url, fetchRes.clone());
             // check cached items size
             limitCacheSize(dynamicCacheName, 15);
             return response;
