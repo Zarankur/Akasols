@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v12';
-const dynamicCacheName = 'site-dynamic-v12';
+const staticCacheName = 'site-static-v13';
+const dynamicCacheName = 'site-dynamic-v13';
 const assets = [
   './',
   './index.html',
@@ -65,7 +65,7 @@ self.addEventListener('fetch', evt => {
             limitCacheSize(dynamicCacheName, 15);
             return fetchRes;
           })
-        }).catch(evt => console.log(evt));
+        }).catch(fetchRes => console.log(fetchRes));
       }).catch(() => {
         if(evt.request.url.indexOf('.html') > -1){
           return caches.match('/pages/fallback.html');
