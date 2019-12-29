@@ -5,6 +5,7 @@
   --title: #FF8816;
 }
 
+/* Embedded gui styles */
 h1{
   font-size: 52px;
 }
@@ -65,7 +66,7 @@ p button:active{
 }
 
 /* layout styles */
-/* nav{
+nav{
   background: var(--primary);
   border-bottom: 10px solid var(--secondary);
   position: absolute;
@@ -80,10 +81,10 @@ nav a span{
 }
 nav .sidenav-trigger{
   margin: 0;
-} */
+}
 
 /* recipe styles */
-/* .recipes{
+.recipes{
   margin-top: 20px;
 }
 .card-panel.recipe{
@@ -102,8 +103,8 @@ nav .sidenav-trigger{
 .recipe-details{
   grid-area: details;
   margin-top: 6px;
-} */
-/* .recipe-delete{
+}
+.recipe-delete{
   grid-area: delete;
   position: absolute;
   bottom: 20px;
@@ -111,13 +112,13 @@ nav .sidenav-trigger{
 }
 .recipe-delete i{
   font-size: 24px;
-} */
-/* .recipe-title{
+}
+.recipe-title{
   font-weight: bold;
 }
 .recipe-ingredients{
   font-size: 0.8em;
-} */
+}
 
 /* form-styles */
 .center{

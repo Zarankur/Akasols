@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Akasols</title>
   <!-- materialize icons, css & js -->
-  <link type="text/css" href="/css/materialize.min.css" rel="stylesheet" >
+  <link type="text/css" href="./css/materialize.min.css" rel="stylesheet" >
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" href="/css/styles.css" rel="stylesheet">
-  <script type="text/javascript" src="/js/materialize.min.js" async></script>
-  <link rel="manifest" href="/manifest.json">
+  <link type="text/css" href="./css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="./js/materialize.min.js" async></script>
+  <link rel="manifest" href="./manifest.json">
   <!-- ios support -->
-  <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+  <link rel="apple-touch-icon" href="./img/icons/icon-96x96.png">
   <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
   <meta name="theme-color" content="#FFE1C4"> 
 
@@ -20,6 +20,8 @@
   <!-- include ar.js for A-Frame -->
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
   <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+  <!-- include embedded html component -->
+  <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
   <!-- <script>ARjs.Context.baseURL = '/js/node_modules/three.min.js'</script> -->
   <!-- <script>
       THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'
@@ -33,23 +35,23 @@
 </head>
 
 <body class="grey lighten-4" onunload="storeSession(['cameraPos'])">
-  <script src="/components/old-voxels.js"></script>
-  <script src="/components/keep-camera-pos.js"></script>
-  <script src="/components/transpos.js"></script>
+  <script src="./components/old-voxels.js"></script>
+  <script src="./components/keep-camera-pos.js"></script>
+  <script src="./components/transpos.js"></script>
   <!-- <script src="/components/hammer-pinchpan.js"></script> -->
 
   <!-- top nav -->
-  <nav class="z-depth-0">
+  <!-- <nav class="z-depth-0">
     <div class="nav-wrapper container">
       <a href="/">Aug<span>Rea</span></a>
       <span class="right grey-text text-darken-1">
         <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
       </span>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- side nav -->
-  <ul id="side-menu" class="sidenav side-menu">
+  <!-- <ul id="side-menu" class="sidenav side-menu">
     <li><a class="subheader">Welcome to Akasols</a></li>
     <li><a href="/" class="waves-effect">Home</a></li>
     <li><a href="/pages/ar.html" class="waves-effect">AugRea</a></li>
@@ -59,7 +61,7 @@
     <li><a href="/pages/contact.html" class="waves-effect">
       <i class="material-icons">mail_outline</i>Contact</a>
     </li>
-  </ul>
+  </ul> -->
 
 
   <!-- recipes
@@ -67,15 +69,15 @@
     
   </div> -->
 
-  <div class="center">
+  <!-- <div class="center">
     <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
       <i class="material-icons">add</i>
     </a>
-  </div>
+  </div> -->
 
   <!-- aframe -->
-  <div class="aframe">
-    <a-scene embedded old-voxels arjs="
+  <!-- <div class="aframe"> -->
+    <a-scene old-voxels arjs="
         sourceType: webcam; 
         sourceWidth:1280; 
         sourceHeight:960; 
@@ -85,8 +87,8 @@
         <!-- detectionMode: mono_and_matrix; 
         matrixCodeType: 3x3; -->
       <a-assets>
-        <a-asset-item id="dragon-obj" src="/img/table.obj"></a-asset-item>
-        <a-asset-item id="dragon-mtl" src="/img/table.mtl"></a-asset-item>
+        <a-asset-item id="dragon-obj" src="./img/table.obj"></a-asset-item>
+        <a-asset-item id="dragon-mtl" src="./img/table.mtl"></a-asset-item>
         <a-mixin id="oldvoxel"
            geometry="primitive: box; height: 0.5; width: 0.5; depth: 0.5"
            material="shader: standard"
@@ -103,17 +105,31 @@
         <a-cylinder class="collidable" position="0 1.75 -8" transpos="translate: 5 0 13" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
         <!-- <a-plane position="0 1 -14" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>  -->
       </a-entity>
+
+      <a-entity id="main" class="dark screen aframe_gui" position="0 1.6 -1" htmlembed="ppu:256" >
+      </a-entity>
+
+
+      <!-- <!-- <a-marker-camera preset='hiro'></a-marker-camera> --> -->
+
+      <a-entity id="cameraRig" position="0 0 3">
+        <a-camera id="camera">
+        </a-camera>
+        <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .screen"></a-entity>
+        <a-entity laser-controls raycaster="objects: .screen;"></a-entity>
+      </a-entity>
+
       
       <!-- <a-camera id="camera">
         <a-cursor intersection-spawn="event: click; mixin: voxel; class: collidable" raycaster="objects: .collidable"></a-cursor>
       </a-camera> -->
-      <a-marker-camera preset='hiro'></a-marker-camera>
+      
       <!--<a-sky color="#ECECEC"></a-sky> -->
     </a-scene>
-  </div>
+  <!-- </div> -->
 
   <!-- add recipe side nav -->
-  <div id="side-form" class="sidenav side-form">
+  <!-- <div id="side-form" class="sidenav side-form">
     <form class="add-recipe container section">
       <h6 >New Recipe</h6>
       <div class="divider"></div>
@@ -129,9 +145,10 @@
         <button class="btn-small">Add</button>
       </div>
     </form>
-  </div>
+  </div> -->
 
-  <script src="/js/app.js"></script>
-  <script src="/js/ui.js"></script>
+  <script src="./js/app.js"></script>
+  <!-- <script src="../js/ui.js"></script> -->
+  <script src="./js/ui_aframe.js"></script>
 </body>
 </html>
