@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v17';
-const dynamicCacheName = 'site-dynamic-v17';
+const staticCacheName = 'site-static-v18';
+const dynamicCacheName = 'site-dynamic-v18';
 const assets = [
   './',
   './index.html',
@@ -54,25 +54,60 @@ self.addEventListener('activate', evt => {
   );
 });
 
-// fetch events; do not respond to firestore api requests  && evt.request.url.indexOf('esp8266') === -1
-self.addEventListener('fetch', evt => {
+self.addEventListener('fetch', function(event) {
+  //removing firebase entries from fetch
   if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
-    evt.respondWith(
-      caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request).then(fetchRes => {
-          console.log(fetchRes);
+    console.log('Handling fetch event for', event.request.url);
+
+    event.respondWith(
+      caches.match(event.request).then(function(response) {
+        if (response) {
+          console.log('Found response in cache:', response);
+
+          return response;
+        }
+        console.log('No response found in cache. About to fetch from network & store in dynamic cache...');
+
+        return fetch(event.request).then(function(response) {
+          console.log('Response from network is:', response);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             // check cached items size
             limitCacheSize(dynamicCacheName, 15);
-            return fetchRes;
+            return response;
           })
-        }).catch((err) => console.log(err));
-      }).catch(() => {
-        if(evt.request.url.indexOf('.html') > -1){
-          return caches.match('/pages/fallback.html');
-        } 
+
+          // return response;
+        }).catch(function(error) {
+          console.error('Fetching failed:', error);
+
+          throw error;
+        });
       })
     );
   }
 });
+
+
+// fetch events; do not respond to firestore api requests  && evt.request.url.indexOf('esp8266') === -1
+// self.addEventListener('fetch', evt => {
+//   if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
+//     evt.respondWith(
+//       caches.match(evt.request).then(cacheRes => {
+//         return cacheRes || fetch(evt.request).then(fetchRes => {
+//           console.log(fetchRes);
+//           return caches.open(dynamicCacheName).then(cache => {
+//             cache.put(evt.request.url, fetchRes.clone());
+//             // check cached items size
+//             limitCacheSize(dynamicCacheName, 15);
+//             return fetchRes;
+//           })
+//         }).catch((err) => console.log(err));
+//       }).catch(() => {
+//         if(evt.request.url.indexOf('.html') > -1){
+//           return caches.match('/pages/fallback.html');
+//         } 
+//       })
+//     );
+//   }
+// });
