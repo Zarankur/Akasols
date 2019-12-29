@@ -53,9 +53,9 @@ self.addEventListener('activate', evt => {
   );
 });
 
-// fetch events; do not respond to firestore api requests
+// fetch events; do not respond to firestore api requests  && evt.request.url.indexOf('esp8266') === -1
 self.addEventListener('fetch', evt => {
-  if(evt.request.url.indexOf('firestore.googleapis.com') === -1 && evt.request.url.indexOf('esp8266') === -1 ){
+  if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
