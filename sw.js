@@ -65,7 +65,7 @@ self.addEventListener('fetch', evt => {
             limitCacheSize(dynamicCacheName, 15);
             return fetchRes;
           })
-        });
+        }).catch(() => console.log(evt));
       }).catch(() => {
         if(evt.request.url.indexOf('.html') > -1){
           return caches.match('/pages/fallback.html');
