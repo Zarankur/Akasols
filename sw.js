@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v2';
-const dynamicCacheName = 'site-dynamic-v2';
+const staticCacheName = 'site-static-v3';
+const dynamicCacheName = 'site-dynamic-v3';
 const assets = [
   './',
   './index.html',
@@ -58,6 +58,7 @@ self.addEventListener('fetch', function(event) {
   //removing firebase entries from fetch
   if(event.request.url.indexOf('firestore.googleapis.com') === -1){
     console.log('Handling fetch event for', event.request.url);
+    console.log(event.request);
 
     event.respondWith(
       caches.match(event.request).then(function(response) {
