@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v9';
-const dynamicCacheName = 'site-dynamic-v9';
+const staticCacheName = 'site-static-v10';
+const dynamicCacheName = 'site-dynamic-v10';
 const assets = [
   './',
   './index.html',
@@ -53,9 +53,9 @@ self.addEventListener('activate', evt => {
   );
 });
 
-// fetch events
+// fetch events; do not respond to firestore api requests
 self.addEventListener('fetch', evt => {
-  if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
+  if(evt.request.url.indexOf('firestore.googleapis.com') === -1 && evt.request.url.indexOf('esp8266') === -1 ){
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
