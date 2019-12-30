@@ -56,7 +56,7 @@ self.addEventListener('activate', evt => {
 
 self.addEventListener('fetch', function(event) {
   //removing firebase entries from fetch
-  if(event.request.url.indexOf('firestore.googleapis.com') === -1){
+  if(event.request.url.indexOf('firestore.googleapis.com') === -1 && evt.request.url.indexOf('esp8266') === -1){
     console.log('Handling fetch event for', event.request.url);
     console.log(event.request);
 

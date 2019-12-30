@@ -60,10 +60,10 @@ function updateGui( ) {
           console.log(xhr.responseText);
           let text = xhr.responseText;
           // console.log(text);
-          let text1 = text.split("<body>")[1];
-          const html = text1.split("</body>")[0];
+          // let text1 = text.split("<body>")[1];
+          // const html = text1.split("</body>")[0];
           // console.log(html);
-          aframe_gui.innerHTML = html;
+          aframe_gui.innerHTML = text;
   
         } else {
           console.error(xhr.statusText);
@@ -92,10 +92,10 @@ function updateGui( ) {
         if (xhr.status === 200) {
           // console.log(xhr.responseText);
           let text = xhr.responseText;
-          let text1 = text.split("<body>")[1];
-          const html = text1.split("</body>")[0];
+          // let text1 = text.split("<body>")[1];
+          // const html = text1.split("</body>")[0];
           // console.log(html);
-          aframe_gui.innerHTML = html;
+          aframe_gui.innerHTML = text;
   
         } else {
           console.error(xhr.statusText);
